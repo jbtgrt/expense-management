@@ -37,7 +37,7 @@
 												  </div>
 												</div>
 		              		</div>
-		              		<div v-if="myExpensesData.expenses" class="col-6 d-flex justify-content-center">
+		              		<div class="col-6 d-flex justify-content-center">
 		              			<canvas id="pieChart" style="min-height: 350px; height: 350px; max-height: 350px; max-width: 100%;"></canvas>
 		              		</div>
 		              	</div>
