@@ -65,8 +65,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## Run Application
-
+## Installation
+- git clone https://github.com/jbtgrt/expense-manager.git
+- cd \expense-manager
 - composer install --dev
 - php artisan migrate
 - php artisan db:seed --class=DatabaseSeeder
@@ -76,5 +77,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - Sample User email: user@gmail.com password: User123#
 - For newly created Users - default password:
   - User123#
-- Create expense category
-- Create expense
+- Admin: Create expense category first
+- Users: Create expense
+- View Dashboard
+- Users can changer password in profile page
