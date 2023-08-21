@@ -61,19 +61,19 @@
 		                <div class="form-group row">
 		                  <label for="name" class="col-sm-3 col-form-label">Name</label>
 		                  <div class="col-sm-9">
-		                    <input type="text" class="form-control" id="name" v-model="user.name" name="name" :disabled="user.role_id === 1 ? true : false">
+		                    <input type="text" class="form-control" id="name" v-model="user.name" name="name" :disabled="last_user.role_id === 1 ? true : false">
 		                  </div>
 		                </div>
 		                <div class="form-group row">
 		                  <label for="email" class="col-sm-3 col-form-label">Email Address</label>
 		                  <div class="col-sm-9">
-		                    <input type="text" class="form-control" id="email" v-model="user.email" name="email" :disabled="user.role_id === 1 ? true : false">
+		                    <input type="text" class="form-control" id="email" v-model="user.email" name="email" :disabled="last_user.role_id === 1 ? true : false">
 		                  </div>
 		                </div>
 		                <div class="form-group row">
 		                  <label for="role" class="col-sm-3 col-form-label">Role</label>
 		                  <div class="col-sm-9">
-									      <select id="role" v-model="user.role_id" class="form-control select2" :disabled="user.role_id === 1 ? true : false">
+									      <select id="role" v-model="user.role_id" class="form-control select2" :disabled="last_user.role_id === 1 ? true : false">
 													<option v-for="type in roleTypes" :key="type.id" :value="type.id">
 														{{type.display_name}}
 													</option>
@@ -83,7 +83,7 @@
 		                
 		              </div>
 		            </div>
-		            <div v-if="user.role_id != 1" class="modal-footer justify-content-between">
+		            <div v-if="last_user.role_id != 1" class="modal-footer justify-content-between">
 		            	<div>
 		            		<button v-if="user.id"  type="button" class="btn btn-danger" @click="deleteUser(user.id)" >
 		            			<span v-if="errorLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -126,6 +126,8 @@
 	const users = computed(() => store.state.users);
 	const roleTypes = computed(() => store.state.roleTypes);
 
+	const last_user = ref({ role_id: '' });
+
 	const user = ref({
 		name: '',
 		email: '',
@@ -164,6 +166,7 @@
 	}
 
 	function showUser(user) {
+		last_user.value = user;
 		store.dispatch('getUser', user);
 		$('#modal-default').modal('show');
 	}
@@ -185,7 +188,5 @@
 				errorLoading.value = false;
 			});
 	}
-
-
 
 </script>
